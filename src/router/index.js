@@ -23,7 +23,15 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/CreateBookFrom.vue')
+      component: () => import('../views/CreateBookForm.vue')
+    },
+    {
+      path: '/admin/books/:id',
+      name: 'update',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/UpdateBookForm.vue')
     }
   ]
 })

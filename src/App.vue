@@ -1,19 +1,15 @@
 <script setup>
-import {RouterView, RouterLink} from 'vue-router';
-
+import { RouterView, RouterLink } from "vue-router";
 </script>
 
 <template>
-
-<div id="page-wrapper">
-
-<!-- Header -->
-  <section id="header">
-
-    <!-- Logo -->
+  <div id="page-wrapper">
+    <!-- Header -->
+    <section id="header">
+      <!-- Logo -->
       <h1><a href="index.html">SF BOOKS</a></h1>
 
-    <!-- Nav -->
+      <!-- Nav -->
       <nav id="nav">
         <ul>
           <li class="current"><RouterLink to="/">Home</RouterLink></li>
@@ -22,33 +18,26 @@ import {RouterView, RouterLink} from 'vue-router';
         </ul>
       </nav>
 
-    <RouterView/>
+      <RouterView />
+    </section>
 
-  </section>
-
-
-<!-- Footer -->
-  <section id="footer">
-    <div class="container">
-      <div class="row">						
-        <div class="col-12">
-
-          <!-- Copyright -->
+    <!-- Footer -->
+    <section id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <!-- Copyright -->
             <div id="copyright">
               <ul class="links">
-                <li>&copy;PokéVue St JUST . All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                <li>&copy;PokéVue St JUST . All rights reserved.</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
               </ul>
             </div>
-
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-</div>
-  
+    </section>
+  </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

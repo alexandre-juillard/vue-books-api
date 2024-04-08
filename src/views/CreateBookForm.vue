@@ -1,6 +1,9 @@
 <script setup>
 
 import {ref} from 'vue';
+import {useRouter} from 'vue-router';
+
+const router = useRouter();
 
 const authorFirstName = ref("");
 const authorLastName = ref("");
@@ -25,11 +28,21 @@ const postData = async ()=>{
         coverUri:coverLink.value,
         recap:recap.value
     };
+    console.log(data);
 
     const response = await fetch(url, {
         method:'POST',
+        headers: {
+        "Content-Type": "application/json",
+      },
         body:JSON.stringify(data)
     })
+    console.log(response);
+
+    if(response.ok){
+        alert('Le livre a été ajouté avec succès');
+        router.push('/admin/books');
+    }
 }
 
 
@@ -42,11 +55,11 @@ const postData = async ()=>{
 
 <!-- Content -->
 
-<h2> Create/ Update Form</h2>
+<h2> Create Form</h2>
 
 
 <p>
-    <form method="post" action="#">
+    <form>
         <div class="row gtr-50">
             <div class="col-6 col-12-small">
                 <input v-model="authorFirstName" name="firstName" placeholder="Author FirstName" type="text">
@@ -73,7 +86,7 @@ const postData = async ()=>{
                 <input v-model="coverLink" name="coverLink" placeholder="Cover Link" type="text">
             </div>
             <div class="col-12">
-                <button @click="postData" class="form-button-submit button icon solid fa-pen">Create/update</button>
+                <button @click="postData" type="button" class="form-button-submit button icon solid fa-pen">Create</button>
             </div>
         </div>
     </form>
