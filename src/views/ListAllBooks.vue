@@ -74,13 +74,11 @@ const deleteBook = async(id) =>{
 		method: 'DELETE'
 	});
 
-	if(response.ok){
+		if(response.ok){
 		alert('Livre supprimé');
 		getAllBooks();
+		}
 	}
-	}
-	
-
 }
 
 </script>
