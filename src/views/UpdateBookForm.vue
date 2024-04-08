@@ -1,8 +1,10 @@
 <script setup>
 import {ref} from 'vue';
-import {useRoute} from 'vue-router';
+import {useRoute, useRouter} from 'vue-router';
 
 const route = useRoute();
+const router = useRouter();
+
 const book = ref({})
 
 const bookId = route.params.id;
@@ -16,6 +18,36 @@ const updateBookDetails = async ()=>{
 }
 
 updateBookDetails();
+
+const updateData = async ()=>{
+    const data = {
+        author:{
+            firstName:book.value.author.firstName,
+            lastName:book.value.author.lastName
+        },
+        title:book.value.title,
+        originalTitle:book.value.originalTitle,
+        publicationYear:book.value.publicationYear,
+        genre:book.value.genre,
+        coverUri:book.value.coverLink,
+        recap:book.value.recap
+    };
+    console.log(data);
+
+    const response = await fetch(apiUrl, {
+        method:'PUT',
+        headers: {
+        "Content-Type": "application/json",
+      },
+        body:JSON.stringify(data)
+    })
+    console.log(response);
+
+    if(response.ok){
+        alert('Le livre a été modifié avec succès');
+        router.push('/admin/books');
+    }
+}
 
 </script>
 
@@ -57,7 +89,7 @@ updateBookDetails();
                 <input v-model="book.coverLink" name="coverLink" placeholder="Cover Link" type="text">
             </div>
             <div class="col-12">
-                <button @click="postData" type="button" class="form-button-submit button icon solid fa-pen">Update</button>
+                <button @click="updateData" type="button" class="form-button-submit button icon solid fa-pen">Update</button>
             </div>
         </div>
     </form>

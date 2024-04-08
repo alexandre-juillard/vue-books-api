@@ -66,6 +66,23 @@ const nextPage = () => {
   }
 }
 
+//suppression d'un livre
+const deleteBook = async(id) =>{
+	const deleteConfirm = confirm('Etes vous sur de vouloir supprimer ce livre?');
+	if(deleteConfirm){
+		const response = await fetch(`http://localhost:3000/books/${id}`, {
+		method: 'DELETE'
+	});
+
+	if(response.ok){
+		alert('Livre supprimé');
+		getAllBooks();
+	}
+	}
+	
+
+}
+
 </script>
 <template>
 					<div class="container">
@@ -93,7 +110,8 @@ const nextPage = () => {
 										  <td>{{book.author.firstName}} {{book.author.lastName}}</td>
 										  <td>{{book.publicationYear}}</td>
 										  <td>{{book.genre}}</td>
-										  <td><RouterLink :to="{name: 'update', params: {id : book._id}}"><button>Modifier</button></RouterLink></td>
+										  <td><RouterLink :to="{name: 'update', params: {id : book._id}}"><button>Modifier</button></RouterLink>
+											<button @click="deleteBook(book._id)">Supprimer</button></td>
 										</tr>
 									  </table>
 								</p>
