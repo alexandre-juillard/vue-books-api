@@ -75,8 +75,8 @@ const deleteBook = async(id) =>{
 	});
 
 		if(response.ok){
-		alert('Livre supprimé');
 		getAllBooks();
+		alert('Livre supprimé');
 		}
 	}
 }
